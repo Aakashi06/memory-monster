@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root { color-scheme: light; --background: #fff8f0; --foreground: #25213a; --radius: 1rem; }
+@theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --radius-sm: calc(var(--radius) * .6); --radius-md: calc(var(--radius) * .8); --radius-lg: var(--radius); --radius-xl: calc(var(--radius) * 1.4); }
+* { box-sizing: border-box; }
+html { background: #fff8f0; }
+body { margin: 0; background: #fff8f0; color: #25213a; font-family: Arial, Helvetica, sans-serif; }
+button { font: inherit; }
+
+.game-button { display: inline-flex; align-items: center; gap: .5rem; border: 0; border-radius: .85rem; padding: .7rem 1rem; font-size: .78rem; font-weight: 900; transition: transform .16s ease, box-shadow .16s ease, opacity .16s ease; }
+.game-button:hover { transform: translateY(-2px); }
+.game-button:active { transform: translateY(1px); }
+.game-button.secondary { background: #fff; color: #625b70; box-shadow: 0 4px 0 #eadfd6; }
+.game-button.primary { background: #5c49d8; color: #fff; box-shadow: 0 4px 0 #4231ac; }
+.game-button.accent { background: #f06b59; color: #fff; box-shadow: 0 4px 0 #c94e40; }
+.game-button:focus-visible, .power-button:focus-visible, .memory-card:focus-visible { outline: 3px solid #f5ad3d; outline-offset: 3px; }
+
+.game-board { position: relative; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: clamp(.38rem, 1.3vw, .85rem); }
+.memory-card { position: relative; aspect-ratio: 1; min-width: 0; border: 0; border-radius: clamp(.65rem, 1.6vw, 1.15rem); background: transparent; perspective: 900px; cursor: pointer; }
+.card-face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; border-radius: inherit; backface-visibility: hidden; transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .2s ease, background .2s ease; }
+.card-front { background: #5c49d8; color: #9c90f0; font-size: clamp(1.1rem, 3vw, 2rem); box-shadow: inset 0 -5px 0 rgba(66,49,172,.45), 0 4px 0 #d8cbe9; transform: rotateY(0); }
+.card-back { background: #fff; font-size: clamp(1.65rem, 5vw, 3.2rem); box-shadow: inset 0 -5px 0 #eee5dd, 0 4px 0 #d8cbe9; transform: rotateY(180deg); }
+.memory-card:hover .card-front { filter: brightness(1.08); transform: translateY(-2px) rotateY(0); }
+.memory-card.is-revealed .card-front, .memory-card.is-matched .card-front { transform: rotateY(-180deg); }
+.memory-card.is-revealed .card-back, .memory-card.is-matched .card-back { transform: rotateY(0); }
+.memory-card.is-matched .card-back { background: #dff7eb; box-shadow: inset 0 -5px 0 #b9e8d3, 0 4px 0 #b9e8d3; animation: match-pop .42s ease; }
+@keyframes match-pop { 0%,100% { transform: rotateY(0) scale(1); } 50% { transform: rotateY(0) scale(1.08); } }
+.countdown-overlay, .victory-overlay { position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; border-radius: 22px; background: rgba(63, 49, 114, .88); text-align: center; }
+.victory-card { width: min(92%, 430px); border-radius: 1.5rem; background: #fffaf5; padding: 1.5rem; box-shadow: 0 14px 0 rgba(37,33,58,.2); }
+.stat-chip { display: flex; flex-direction: column; gap: .2rem; border-radius: .8rem; background: #f4ecff; padding: .7rem .8rem; }
+.stat-chip span { color: #a49cac; font-size: .65rem; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
+.stat-chip b { color: #5c49d8; font-size: 1.1rem; }
+.power-button { display: inline-flex; align-items: center; gap: .4rem; border: 1px solid #eadfd6; border-radius: .7rem; background: #fff; padding: .55rem .7rem; color: #625b70; font-size: .72rem; font-weight: 900; box-shadow: 0 3px 0 #eadfd6; transition: all .15s ease; }
+.power-button:hover:not(:disabled) { transform: translateY(-2px); color: #5c49d8; }
+.power-button:disabled { cursor: not-allowed; opacity: .45; }
+.power-button b { display: grid; min-width: 1.15rem; place-items: center; border-radius: 999px; background: #f2e8ff; color: #5c49d8; font-size: .65rem; }
+@media (max-width: 520px) { .power-button { padding: .55rem .55rem; } .power-button svg { display: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
