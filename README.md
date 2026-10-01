@@ -1,7 +1,8 @@
 # memory-monster
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
-<img width="780" height="948" alt="image" src="https://github.com/user-attachments/assets/5d4e3d7c-32f6-48ae-859b-3cb08353fc11" />
+<img width="1263" height="699" alt="Screenshot 2026-10-01 at 16 50 14" src="https://github.com/user-attachments/assets/7afb3795-3eb1-4916-bf25-9493bf8815db" /> 
+
 
 
 ## Built with v0
