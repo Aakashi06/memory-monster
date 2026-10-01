@@ -2,6 +2,7 @@
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
 <img width="1263" height="699" alt="Screenshot 2026-10-01 at 16 50 14" src="https://github.com/user-attachments/assets/7afb3795-3eb1-4916-bf25-9493bf8815db" /> 
+<img width="2512" height="1446" alt="image" src="https://github.com/user-attachments/assets/ca898061-bede-4ece-ab24-0c1d4cfe9f6e" /> 
 
 
 
